@@ -46,22 +46,106 @@ class AnswerCell : UITableViewCell {
 
 extension QuestionVC : UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if tableView == chatTV { return chats.count }
         return answers.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if tableView == chatTV {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ChatCell", for: indexPath)
+            let chat = chats[indexPath.row]
+            cell.textLabel?.numberOfLines = 0
+            cell.textLabel?.text = chat.message
+            let bot = "\(chat.name!) @ \(df.string(from: chat.createdAt!))"
+            cell.detailTextLabel?.text = bot
+            return cell
+        }
+
         let cell = tableView.dequeueReusableCell(withIdentifier: "AnswerCell", for: indexPath) as! AnswerCell
         
         let a = answers[indexPath.row]
         cell.textLabel?.numberOfLines = 0
         cell.textLabel?.text = a.text
+        cell.textLabel?.backgroundColor = .clear
+        cell.detailTextLabel?.text = "\(a.voteCount.intValue)"
+        cell.detailTextLabel?.backgroundColor = .clear
+        cell.accessoryType = myAnswer != nil && myAnswer?.objectId == a.objectId ? .checkmark : .none
+        
+        if winners.contains(a) {
+            cell.backgroundColor = greenColor.withAlphaComponent(0.5)
+        } else {
+            cell.backgroundColor = .clear
+        }
         
         return cell
     }
 }
 
 extension QuestionVC : UITableViewDelegate {
+    func doVote(ans:Answer,indexPaths:[IndexPath]) {
+        ans.incrementKey("voteCount")
+        myAnswer = ans
+        let v = Vote()
+        v.answer = ans
+        v.question = question
+        v.rank = 0
+        v.user = AppDelegate.authUserIdent
+        v.saveInBackground()
+        myVote = v
+        tableView.reloadRows(at: indexPaths, with: .fade)
+    }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        tableView.deselectRow(at: indexPath, animated: true)
+        if tableView == chatTV { return }
+        
+        tableView.deselectRow(at: indexPath, animated: false)
+        if !isNew {
+            let ans = answers[indexPath.row]
+            if myAnswer != nil {
+                if myAnswer?.objectId != ans.objectId {
+                    let ac = UIAlertController(title: "Change Vote?", message: nil, preferredStyle: .alert)
+                    ac.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+                    ac.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
+                        let oldRow = self.answers.index(where: {$0.objectId == self.myAnswer?.objectId})
+//                        self.myAnswer?.incrementKey("voteCount", byAmount: -1)
+                        self.myAnswer?.voteCount = NSNumber(value: (self.myAnswer?.voteCount?.intValue ?? 1) - 1)
+                        self.myAnswer?.saveInBackground()
+                        self.myAnswer = nil
+                        self.myVote?.deleteInBackground()
+                        self.myVote = nil
+                        if let old = oldRow {
+                            let ip = IndexPath(row: old, section: 0)
+                            self.doVote(ans: ans, indexPaths: [ip,indexPath])
+                        } else {
+                            self.doVote(ans: ans, indexPaths: [indexPath])
+                        }
+                    }))
+                    present(ac, animated: true, completion: nil)
+                } else {
+                    
+                }
+            } else {
+                doVote(ans: ans, indexPaths: [indexPath])
+            }
+        } else {
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if tableView == chatTV { return nil }
+        let l = UILabel()
+        l.backgroundColor = .black
+        l.text = "RESOLVED"
+        l.textAlignment = .center
+        l.textColor = .white
+        l.font = UIFont.systemFont(ofSize: 24)
+        return l
+    }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if tableView == chatTV { return 0 }
+        return isOpen ? 0 : 40
+    }
 }
 
 protocol QuestionVCDelegate : class {
@@ -79,11 +163,32 @@ class QuestionVC: UIViewController {
     weak var delegate : QuestionVCDelegate?
     var isNew = false
     var question : Question?
+    private var myAnswer : Answer?
+    private var myVote : Vote?
     private var answers = [Answer]()
     private var method : Method = .Majority
     private var invites = [CUser]()
+    private var chats = [Chat]()
+    private var df = DateFormatter()
+    
+    private let greenColor = UIColor(red: 0, green: 143.0/255, blue: 0, alpha: 1)
     
     private var saveRightButton : UIBarButtonItem?
+    
+    @IBOutlet weak var openButton: UIBarButtonItem!
+    @IBAction func openHit(_ sender: UIBarButtonItem) {
+        if sender.title == "Open" {
+            sender.title = "Closed"
+            sender.tintColor = .red
+            question?.isOpen = false
+        } else {
+            sender.title = "Open"
+            sender.tintColor = greenColor
+            question?.isOpen = true
+        }
+        question?.saveInBackground()
+        resolveQuestion()
+    }
     
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBAction func saveHit(_ sender: UIBarButtonItem) {
@@ -94,7 +199,8 @@ class QuestionVC: UIViewController {
                     self.method = v
                     let q = Question()
                     q.text = self.questionTV.text
-                    q.user = CUser.current()
+                    q.oktaId = AppDelegate.authUserIdent
+                    q.isOpen = true
                     q.saveInBackground { success,error in
                         if success {
                             for a in self.answers {
@@ -130,7 +236,7 @@ class QuestionVC: UIViewController {
     @IBOutlet weak var inviteViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var inviteSV: UIScrollView!
     @IBOutlet weak var inviteButton: UIBarButtonItem!
-    var didPopulateInvite = false
+    private var didPopulateInvite = false
     @IBAction func inviteHit(_ sender: UIBarButtonItem) {
         if inviteSV == nil || invites.count == 0 { return }
 
@@ -198,12 +304,24 @@ class QuestionVC: UIViewController {
             guard let text = ac.textFields?[0].text else { return }
             let ans = Answer()
             ans.text = text
+            ans.voteCount = 0
             self.answers.append(ans)
             self.tableView.reloadData()
         }))
         present(ac, animated: true, completion: nil)
     }
     
+
+    private var isOpen = true
+    private var winners : [Answer] = []
+    func resolveQuestion() {
+        defer { tableView.allowsSelection = isOpen; tableView.reloadData() }
+        guard let open = question?.isOpen, !open.boolValue else { isOpen = true; winners = []; return }
+        isOpen = false
+        
+        let max = answers.max(by: { $0.voteCount.intValue < $1.voteCount.intValue })?.voteCount.intValue
+        winners = answers.filter { $0.voteCount.intValue == max }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -216,19 +334,66 @@ class QuestionVC: UIViewController {
             makeUser(name: "Shawn", index: 2),
             makeUser(name: "Randall", index: 3),
             makeUser(name: "David", index: 4),
-            makeUser(name: "Justin", index: 5)
+            makeUser(name: "Brent", index: 5),
+            makeUser(name: "Justin", index: 6),
+            makeUser(name: "Ed", index: 7)
         ]
         
+        df.dateStyle = .short
+        df.timeStyle = .medium
+        
+        openButton.isEnabled = !isNew
+        resolveQuestion()
+        
         if let qu = question {
+            openButton.isEnabled = openButton.isEnabled && qu.oktaId == AppDelegate.authUserIdent
+            
+            if !qu.isOpen.boolValue {
+                openButton.title = "Closed"
+                openButton.tintColor = .red
+            }
+            
+            let dg = DispatchGroup()
+
             questionTV.text = qu.text
             questionTV.textColor = .black
             let q = Answer.query()!
             q.whereKey("question", equalTo: qu)
+            dg.enter()
             q.findObjectsInBackground { objects, error in
                 guard let ans = objects as? [Answer] else { return }
                 self.answers = ans
-                self.tableView.reloadData()
+                dg.leave()
             }
+            
+            let vq = Vote.query()!
+            vq.whereKey("question", equalTo: qu)
+            vq.whereKey("user", equalTo: AppDelegate.authUserIdent!)
+//            vq.includeKey("answer")
+            dg.enter()
+            vq.getFirstObjectInBackground { obj, error in
+                defer { dg.leave() }
+                guard let vote = obj as? Vote else { return }
+                guard let ans = vote.answer else { return }
+                self.myAnswer = self.answers.first(where: {$0.objectId == ans.objectId})
+                self.myVote = vote
+            }
+            
+            let cq = Chat.query()!
+            cq.whereKey("question", equalTo: qu)
+            cq.order(byDescending: "createdAt")
+            dg.enter()
+            cq.findObjectsInBackground { objects, error in
+                guard let cs = objects as? [Chat] else { return }
+                self.chats = cs
+                dg.leave()
+            }
+            
+            dg.notify(queue: .main) {
+                self.resolveQuestion()
+                self.chatTV.reloadData()
+            }
+            
             navigationItem.rightBarButtonItem = nil
         }
     }
@@ -243,6 +408,45 @@ class QuestionVC: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
+    // MARK: - Chat
+    
+    @IBOutlet weak var chatTV: UITableView!
+    
+    @IBAction func addChatHit(_ sender: UIBarButtonItem) {
+        let ac = UIAlertController(title: nil, message: "", preferredStyle: .alert)
+        ac.addTextField(configurationHandler: { tf in
+            tf.placeholder = "Your Message"
+        })
+        ac.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        ac.addAction(UIAlertAction(title: "Post", style: .default, handler: {action in
+            guard let text = ac.textFields?[0].text, !text.isEmpty else { return }
+            let chat = Chat()
+            chat.message = text
+            if let comps = AppDelegate.authUserName?.components(separatedBy: .whitespaces) {
+                let fname = comps.first ?? "?"
+                if comps.count > 1 {
+                    let lname = String(comps[1].first ?? "?")
+                    chat.name = "\(fname) \(lname)"
+                } else {
+                    chat.name = fname
+                }
+            } else {
+                chat.name = AppDelegate.authUserName ?? "??"
+            }
+            chat.question = self.question
+            chat.user = AppDelegate.authUserIdent
+            chat.saveInBackground { success, error in
+                self.chats.insert(chat, at: 0)
+                self.chatTV.reloadData()
+            }
+        }))
+        present(ac, animated: true, completion: nil)
+    }
+    
+    
+    
     
 
     /*

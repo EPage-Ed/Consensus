@@ -10,8 +10,9 @@ import Foundation
 import Parse
 
 class Question : PFObject {
-    @NSManaged var user : CUser!
+    @NSManaged var oktaId : String!
     @NSManaged var text : String!
+    @NSManaged var isOpen : NSNumber!
 }
 
 extension Question: PFSubclassing {

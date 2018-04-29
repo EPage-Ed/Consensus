@@ -10,6 +10,7 @@
 		17759CC26511A14E7B3AC65A /* Pods_Consensus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2078364345F27D167EF84785 /* Pods_Consensus.framework */; };
 		D86754802095C44D0021BFB4 /* CheckButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D867547F2095C44D0021BFB4 /* CheckButton.swift */; };
 		D86754822095CBB40021BFB4 /* Vote.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86754812095CBB40021BFB4 /* Vote.swift */; };
+		D8675484209613580021BFB4 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8675483209613580021BFB4 /* Chat.swift */; };
 		D8FA40AC2095173F00FEBAFE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FA40AB2095173F00FEBAFE /* AppDelegate.swift */; };
 		D8FA40AE2095173F00FEBAFE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FA40AD2095173F00FEBAFE /* ViewController.swift */; };
 		D8FA40B12095173F00FEBAFE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8FA40AF2095173F00FEBAFE /* Main.storyboard */; };
@@ -30,6 +31,7 @@
 		9D01B63AE08260E3BE9760AD /* Pods-Consensus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Consensus.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Consensus/Pods-Consensus.debug.xcconfig"; sourceTree = "<group>"; };
 		D867547F2095C44D0021BFB4 /* CheckButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckButton.swift; sourceTree = "<group>"; };
 		D86754812095CBB40021BFB4 /* Vote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vote.swift; sourceTree = "<group>"; };
+		D8675483209613580021BFB4 /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
 		D8FA40A82095173F00FEBAFE /* Consensus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Consensus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8FA40AB2095173F00FEBAFE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D8FA40AD2095173F00FEBAFE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 				D8FA40C6209575E800FEBAFE /* Question.swift */,
 				D8FA40CA2095779A00FEBAFE /* Answer.swift */,
 				D86754812095CBB40021BFB4 /* Vote.swift */,
+				D8675483209613580021BFB4 /* Chat.swift */,
 				D8FA40C82095767B00FEBAFE /* CUser.swift */,
 				D867547F2095C44D0021BFB4 /* CheckButton.swift */,
 			);
@@ -268,6 +271,7 @@
 				D8FA40AE2095173F00FEBAFE /* ViewController.swift in Sources */,
 				D8FA40C7209575E800FEBAFE /* Question.swift in Sources */,
 				D8FA40CD20957A7C00FEBAFE /* QuestionVC.swift in Sources */,
+				D8675484209613580021BFB4 /* Chat.swift in Sources */,
 				D8FA40AC2095173F00FEBAFE /* AppDelegate.swift in Sources */,
 				D8FA40CB2095779A00FEBAFE /* Answer.swift in Sources */,
 				D8FA40C92095767B00FEBAFE /* CUser.swift in Sources */,

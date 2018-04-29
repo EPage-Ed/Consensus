@@ -11,6 +11,12 @@ import Parse
 import OktaAuth
 import OktaJWT
 
+/*  Alexa
+ Skill ID: amzn1.ask.skill.a225aaa4-5b11-445c-a3fd-b1142e299e0f
+ 
+ 
+ */
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 

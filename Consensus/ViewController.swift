@@ -63,7 +63,7 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         let q = Question.query()!
-        q.whereKey("user", equalTo: CUser.current()!)
+        q.whereKey("oktaId", equalTo: AppDelegate.authUserIdent)
         q.findObjectsInBackground { objects, error in
             guard let objs = objects as? [Question] else { return }
             self.questions = objs
