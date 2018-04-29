@@ -7,14 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		17759CC26511A14E7B3AC65A /* Pods_Consensus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2078364345F27D167EF84785 /* Pods_Consensus.framework */; };
+		D86754802095C44D0021BFB4 /* CheckButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D867547F2095C44D0021BFB4 /* CheckButton.swift */; };
+		D86754822095CBB40021BFB4 /* Vote.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86754812095CBB40021BFB4 /* Vote.swift */; };
 		D8FA40AC2095173F00FEBAFE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FA40AB2095173F00FEBAFE /* AppDelegate.swift */; };
 		D8FA40AE2095173F00FEBAFE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FA40AD2095173F00FEBAFE /* ViewController.swift */; };
 		D8FA40B12095173F00FEBAFE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8FA40AF2095173F00FEBAFE /* Main.storyboard */; };
 		D8FA40B32095174100FEBAFE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8FA40B22095174100FEBAFE /* Assets.xcassets */; };
 		D8FA40B62095174100FEBAFE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8FA40B42095174100FEBAFE /* LaunchScreen.storyboard */; };
+		D8FA40BE20951B1F00FEBAFE /* Okta.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8FA40BD20951B1F00FEBAFE /* Okta.plist */; };
+		D8FA40C1209526A900FEBAFE /* SplashVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FA40C0209526A900FEBAFE /* SplashVC.swift */; };
+		D8FA40C4209533FF00FEBAFE /* thumbsUp.png in Resources */ = {isa = PBXBuildFile; fileRef = D8FA40C3209533FF00FEBAFE /* thumbsUp.png */; };
+		D8FA40C7209575E800FEBAFE /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FA40C6209575E800FEBAFE /* Question.swift */; };
+		D8FA40C92095767B00FEBAFE /* CUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FA40C82095767B00FEBAFE /* CUser.swift */; };
+		D8FA40CB2095779A00FEBAFE /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FA40CA2095779A00FEBAFE /* Answer.swift */; };
+		D8FA40CD20957A7C00FEBAFE /* QuestionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FA40CC20957A7C00FEBAFE /* QuestionVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2078364345F27D167EF84785 /* Pods_Consensus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Consensus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2B8533EA0426981AA3A0E22F /* Pods-Consensus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Consensus.release.xcconfig"; path = "Pods/Target Support Files/Pods-Consensus/Pods-Consensus.release.xcconfig"; sourceTree = "<group>"; };
+		9D01B63AE08260E3BE9760AD /* Pods-Consensus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Consensus.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Consensus/Pods-Consensus.debug.xcconfig"; sourceTree = "<group>"; };
+		D867547F2095C44D0021BFB4 /* CheckButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckButton.swift; sourceTree = "<group>"; };
+		D86754812095CBB40021BFB4 /* Vote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vote.swift; sourceTree = "<group>"; };
 		D8FA40A82095173F00FEBAFE /* Consensus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Consensus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8FA40AB2095173F00FEBAFE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D8FA40AD2095173F00FEBAFE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +37,13 @@
 		D8FA40B22095174100FEBAFE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D8FA40B52095174100FEBAFE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D8FA40B72095174100FEBAFE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D8FA40BD20951B1F00FEBAFE /* Okta.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Okta.plist; sourceTree = "<group>"; };
+		D8FA40C0209526A900FEBAFE /* SplashVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashVC.swift; sourceTree = "<group>"; };
+		D8FA40C3209533FF00FEBAFE /* thumbsUp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thumbsUp.png; sourceTree = "<group>"; };
+		D8FA40C6209575E800FEBAFE /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
+		D8FA40C82095767B00FEBAFE /* CUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CUser.swift; sourceTree = "<group>"; };
+		D8FA40CA2095779A00FEBAFE /* Answer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Answer.swift; sourceTree = "<group>"; };
+		D8FA40CC20957A7C00FEBAFE /* QuestionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +51,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17759CC26511A14E7B3AC65A /* Pods_Consensus.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		85BA378E0AA3F02B9E276532 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2078364345F27D167EF84785 /* Pods_Consensus.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		D8FA409F2095173F00FEBAFE = {
 			isa = PBXGroup;
 			children = (
 				D8FA40AA2095173F00FEBAFE /* Consensus */,
 				D8FA40A92095173F00FEBAFE /* Products */,
+				F61E879F2F94EA8E1B7C65E3 /* Pods */,
+				85BA378E0AA3F02B9E276532 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +87,56 @@
 		D8FA40AA2095173F00FEBAFE /* Consensus */ = {
 			isa = PBXGroup;
 			children = (
+				D8FA40C2209533FF00FEBAFE /* Images */,
+				D8FA40C5209575CF00FEBAFE /* Objects */,
 				D8FA40AB2095173F00FEBAFE /* AppDelegate.swift */,
 				D8FA40AD2095173F00FEBAFE /* ViewController.swift */,
+				D8FA40BF2095269700FEBAFE /* Controllers */,
 				D8FA40AF2095173F00FEBAFE /* Main.storyboard */,
 				D8FA40B22095174100FEBAFE /* Assets.xcassets */,
 				D8FA40B42095174100FEBAFE /* LaunchScreen.storyboard */,
 				D8FA40B72095174100FEBAFE /* Info.plist */,
+				D8FA40BD20951B1F00FEBAFE /* Okta.plist */,
 			);
 			path = Consensus;
+			sourceTree = "<group>";
+		};
+		D8FA40BF2095269700FEBAFE /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D8FA40C0209526A900FEBAFE /* SplashVC.swift */,
+				D8FA40CC20957A7C00FEBAFE /* QuestionVC.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		D8FA40C2209533FF00FEBAFE /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				D8FA40C3209533FF00FEBAFE /* thumbsUp.png */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		D8FA40C5209575CF00FEBAFE /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				D8FA40C6209575E800FEBAFE /* Question.swift */,
+				D8FA40CA2095779A00FEBAFE /* Answer.swift */,
+				D86754812095CBB40021BFB4 /* Vote.swift */,
+				D8FA40C82095767B00FEBAFE /* CUser.swift */,
+				D867547F2095C44D0021BFB4 /* CheckButton.swift */,
+			);
+			path = Objects;
+			sourceTree = "<group>";
+		};
+		F61E879F2F94EA8E1B7C65E3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9D01B63AE08260E3BE9760AD /* Pods-Consensus.debug.xcconfig */,
+				2B8533EA0426981AA3A0E22F /* Pods-Consensus.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +146,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D8FA40BA2095174100FEBAFE /* Build configuration list for PBXNativeTarget "Consensus" */;
 			buildPhases = (
+				AD5BBE3D0D4322AEFF2A4301 /* [CP] Check Pods Manifest.lock */,
 				D8FA40A42095173F00FEBAFE /* Sources */,
 				D8FA40A52095173F00FEBAFE /* Frameworks */,
 				D8FA40A62095173F00FEBAFE /* Resources */,
+				D599E7FB4E5DD10E4592F815 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -125,10 +202,63 @@
 				D8FA40B62095174100FEBAFE /* LaunchScreen.storyboard in Resources */,
 				D8FA40B32095174100FEBAFE /* Assets.xcassets in Resources */,
 				D8FA40B12095173F00FEBAFE /* Main.storyboard in Resources */,
+				D8FA40C4209533FF00FEBAFE /* thumbsUp.png in Resources */,
+				D8FA40BE20951B1F00FEBAFE /* Okta.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		AD5BBE3D0D4322AEFF2A4301 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Consensus-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D599E7FB4E5DD10E4592F815 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Consensus/Pods-Consensus-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AppAuth/AppAuth.framework",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/HydraAsync/Hydra.framework",
+				"${BUILT_PRODUCTS_DIR}/OktaAuth/OktaAuth.framework",
+				"${BUILT_PRODUCTS_DIR}/OktaJWT/OktaJWT.framework",
+				"${BUILT_PRODUCTS_DIR}/Parse/Parse.framework",
+				"${BUILT_PRODUCTS_DIR}/Vinculum/Vinculum.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AppAuth.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Hydra.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OktaAuth.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OktaJWT.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Parse.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Vinculum.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Consensus/Pods-Consensus-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D8FA40A42095173F00FEBAFE /* Sources */ = {
@@ -136,7 +266,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				D8FA40AE2095173F00FEBAFE /* ViewController.swift in Sources */,
+				D8FA40C7209575E800FEBAFE /* Question.swift in Sources */,
+				D8FA40CD20957A7C00FEBAFE /* QuestionVC.swift in Sources */,
 				D8FA40AC2095173F00FEBAFE /* AppDelegate.swift in Sources */,
+				D8FA40CB2095779A00FEBAFE /* Answer.swift in Sources */,
+				D8FA40C92095767B00FEBAFE /* CUser.swift in Sources */,
+				D86754802095C44D0021BFB4 /* CheckButton.swift in Sources */,
+				D86754822095CBB40021BFB4 /* Vote.swift in Sources */,
+				D8FA40C1209526A900FEBAFE /* SplashVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,11 +415,13 @@
 		};
 		D8FA40BB2095174100FEBAFE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9D01B63AE08260E3BE9760AD /* Pods-Consensus.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2BY2NMR4CA;
 				INFOPLIST_FILE = Consensus/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -296,11 +435,13 @@
 		};
 		D8FA40BC2095174100FEBAFE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2B8533EA0426981AA3A0E22F /* Pods-Consensus.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2BY2NMR4CA;
 				INFOPLIST_FILE = Consensus/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
